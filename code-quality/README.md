@@ -6,8 +6,7 @@ This directory contains configurations and tools to ensure code quality in your 
 
 ### Biome
 - **File**: `biome.json`
-- **Description**: Configuration for Biome, a tool for code formatting, linting, and organizing imports.
-- **Usage**: The configuration enables formatting, linting, and import organization for JavaScript files. It uses spaces for indentation and single quotes for strings.
+- **Description**: Biome is a fast formatter for JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL that scores 97% compatibility with Prettier, saving CI and developer time. It's perfect to use in your project like React, Next.js and Solid.js
 ---
 - **Document**: https://biomejs.dev/guides/getting-started/
 - Install command: `bun add --dev --exact @biomejs/biome`
