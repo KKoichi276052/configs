@@ -8,6 +8,11 @@ This directory contains configurations and tools to ensure code quality in your 
 - **File**: `biome.json`
 - **Description**: Configuration for Biome, a tool for code formatting, linting, and organizing imports.
 - **Usage**: The configuration enables formatting, linting, and import organization for JavaScript files. It uses spaces for indentation and single quotes for strings.
+---
+- **Document**: https://biomejs.dev/guides/getting-started/
+- Install command: `bun add --dev --exact @biomejs/biome`
+- init command: `bunx biome init`
+- 
 
 ### CSpell
 - **File**: `cspell.yaml`
