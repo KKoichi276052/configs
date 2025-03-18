@@ -1,11 +1,22 @@
-# Code Quality
+# Quality Assurance
 This directory contains configurations and tools to ensure code quality in your projects.
 
-## Tools and Configurations
+## Code Quality
 
-### [Biome](https://biomejs.dev/guides/getting-started/)
-Biome is a fast formatter for JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL that scores 97% compatibility with Prettier, saving CI and developer time. It's perfect to use in your project like React, Next.js and Solid.js
-#### Config file: `biome.json`
+### [Biome(Ultracite)](https://biomejs.dev/guides/getting-started/)
+**Biome** is a fast formatter for JavaScript, TypeScript, JSX, TSX, JSON, CSS and GraphQL that scores 97% compatibility with Prettier, saving CI and developer time. It's perfect to use in your project like React, Next.js and Solid.js
+**Ultracite** is a robust linting configuration for modern TypeScript apps, built on Biome. It is incredibly opinionated and strict, enforcing the maximum amount of type safety and code quality.
+
+#### Installation
+`bun add --dev --exact @biomejs/biome`
+
+#### Initialization
+`bunx biome init`
+or
+`bunx ultracite init`
+this will create `biome.json`
+replace it with `./configs/biome.json`
+
 
 #### useful resources
 - [Migrate from ESLint and Prettier](https://biomejs.dev/guides/migrate-eslint-prettier/) 
@@ -20,33 +31,80 @@ Biome is a fast formatter for JavaScript, TypeScript, JSX, TSX, JSON, CSS and Gr
 - [Githook](https://biomejs.dev/recipes/git-hooks/)
 - [CI](https://biomejs.dev/recipes/continuous-integration/)
 ---
-**Commands**
-- **Install**: `bun add --dev --exact @biomejs/biome`
-- **init**: `bunx biome init`
-- **check format (fix)**: `bunx biome format (--write)`
-- **check lint (fix)**: `bunx biome lint (--write)` 
-- **scripts**
+**scripts (Don't forget to remove comments. it's for instruction purpose)**
+```
+{
+	...
+	"format:check": "bunx biome format", // check format
+	"format:fix": "bunx biome format --write", // apply safe fix for format
+	"lint:check": "bunx biome lint", // check lint
+	"lint:fix": "bunx biome lint --write", // apply safe fix for lint
+	"biome:fix": "bunx biome check --write",
+	"biome:report": "biome check --reporter=summary"
+	...
+}
+```
+---
+
+### [Million](https://million.dev/)
+>Million Lint is a VSCode extension that speeds up your website!
+>Your React app is slow. Million Lint surfaces problematic code and automatically suggests ways to improve it.
+>Million Lint works with any React app (Next.js, Vite, Webpack, etc.) – get started in minutes!
+
+⚠️ as of 13/3/2025 turbopack local dev doesn't work with million
+
+- **installation**
+  `bunx million@latest`
+
+---
+
+### [React Scan](https://github.com/aidenybai/react-scan#readme)
+>automatically detects performance issues in your React app.
+- **installation**
+  ```
+	# to check your local app
+	npx react-scan@0.0.36 http://localhost:3000		
 	```
-		"format": "bunx biome format",
-		"format:fix": "bunx biome format --write",
-		"lint": "bunx biome lint",
-		"lint:fix": "bunx biome lint --write",
-		"biome:fix": "bunx biome check --write",
-		"biome:report": "biome check --reporter=summary"
+	or via cdn
+	```
+	<script src="https://unpkg.com/react-scan/dist/auto.global.js"></script>
+	```
+	example script to use react-scan in your next.js app
+	```
+	"scan": "next dev & npx react-scan@latest localhost:3000"
 	```
 
-### CSpell
+---
+
+### `ts.config.json`
+
+
+
+---
+
+### [CSpell](https://cspell.org/)
+
 - **File**: `cspell.yaml`
-- **Description**: Configuration for CSpell, a spell checker for code.
-- **Usage**: The configuration includes dictionaries for TypeScript, Node, and fonts. It ignores the `node_modules` and `package.json` files.
 
-### Lefthook
+---
+
+### [Lefthook](https://lefthook.dev/intro.html)
 - **File**: `lefthook.yml`
-- **Description**: Configuration for Lefthook, a tool for managing Git hooks.
-- **Usage**: The configuration sets up a pre-commit hook to check JavaScript and TypeScript files using Biome. It stages fixed files automatically.
+Disable lefthook in CI
 
-## Usage Instructions
+#### useful resources
+- [examples](https://lefthook.dev/examples/index.html)
+- [Tips](https://lefthook.dev/usage/tips.html)
 
-1. **Biome**: Run `biome check` to check for code quality issues and `biome format` to format the code.
-2. **CSpell**: Run `cspell` to check for spelling errors in the code.
-3. **Lefthook**: The pre-commit hook will automatically run when you commit changes. Ensure you have Lefthook installed and configured in your project.
+##### Tips
+When using NPM package lefthook set CI=true in your CI (if it does not set automatically). When CI=true is set lefthook NPM package won't install the hooks in the postinstall script.
+
+---
+
+
+
+---
+
+## Commit messages
+### [git-cz]()
+### [Commitlint](https://commitlint.js.org/)
