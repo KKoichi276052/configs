@@ -95,6 +95,7 @@ Disable lefthook in CI
 #### useful resources
 - [examples](https://lefthook.dev/examples/index.html)
 - [Tips](https://lefthook.dev/usage/tips.html)
+- [5 cool (and surprising) ways to configure Lefthook for automation joy](https://evilmartians.com/chronicles/5-cool-and-surprising-ways-to-configure-lefthook-for-automation-joy)
 
 ##### Tips
 When using NPM package lefthook set CI=true in your CI (if it does not set automatically). When CI=true is set lefthook NPM package won't install the hooks in the postinstall script. (??)
