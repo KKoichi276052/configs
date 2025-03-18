@@ -97,14 +97,13 @@ Disable lefthook in CI
 - [Tips](https://lefthook.dev/usage/tips.html)
 
 ##### Tips
-When using NPM package lefthook set CI=true in your CI (if it does not set automatically). When CI=true is set lefthook NPM package won't install the hooks in the postinstall script.
+When using NPM package lefthook set CI=true in your CI (if it does not set automatically). When CI=true is set lefthook NPM package won't install the hooks in the postinstall script. (??)
 
 ---
 
 
 
 ---
-
-## Commit messages
-### [git-cz]()
-### [Commitlint](https://commitlint.js.org/)
+## ~~Commit messages~~ (Use AI to generate commit message)
+~~### [git-cz]()~~
+~~### [Commitlint](https://commitlint.js.org/)~~
