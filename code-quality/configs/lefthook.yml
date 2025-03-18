@@ -1,0 +1,61 @@
+pre-commit-fix:
+  commands:
+    check:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+
+pre-commit:
+  commands:
+    check:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: bunx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+
+
+
+## Examples
+
+## {files} template
+# Run go vet only on files listed with git ls-files -m(git addした後のファイル. -m Show files with an unstaged modification (note that an unstaged deletion also counts as an unstaged modification) https://git-scm.com/docs/git-ls-files) command with .go extension.
+# pre-commit:
+#   commands:
+#     govet:
+#       files: git ls-files -m
+#       glob: "*.go"
+#       run: go vet {files}
+
+## {staged_files} template
+# Run yarn eslint only on staged files with .js, .ts, .jsx, and .tsx extensions.
+# pre-commit:
+#   commands:
+#     eslint:
+#       glob: "*.{js,ts,jsx,tsx}"
+#       run: yarn eslint {staged_files}
+
+## {push_files} template
+# If you want to lint files only before pushing them.
+# pre-push:
+#   commands:
+#     eslint:
+#       glob: "*.{js,ts,jsx,tsx}"
+#       run: yarn eslint {push_files}
+
+## Parallel execution
+# lint:
+#   parallel: true
+#   commands:
+#     rubocop:
+#       run: bundle exec rubocop --parallel
+#     danger:
+#       run: bundle exec danger
+#     eslint-assets:
+#       run: yarn eslint --ext .es6 app/assets/javascripts
+#     eslint-test:
+#       run: yarn eslint --ext .es6 test/javascripts
+#     eslint-plugins-assets:
+#       run: yarn eslint --ext .es6 plugins/**/assets/javascripts
+#     eslint-plugins-test:
+#       run: yarn eslint --ext .es6 plugins/**/test/javascripts
+#     eslint-assets-tests:
+#       run: yarn eslint app/assets/javascripts test/javascripts
